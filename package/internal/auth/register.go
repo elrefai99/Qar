@@ -15,6 +15,7 @@ type RegisterRequest struct {
 }
 
 func RegisterService(db *sql.DB, payload RegisterRequest) error {
+	defer db.Close()
 	var userID string
 
 	err := db.QueryRow(

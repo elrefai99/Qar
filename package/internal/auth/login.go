@@ -16,6 +16,7 @@ type LoginRequest struct {
 }
 
 func LoginService(db *sql.DB, payload LoginRequest) (string, error) {
+	defer db.Close()
 	var (
 		userID   string
 		password string
