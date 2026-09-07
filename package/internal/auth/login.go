@@ -20,7 +20,7 @@ func LoginService(db *sql.DB, payload LoginRequest) (string, error) {
 		userID   string
 		password string
 	)
-	selectQuery := "select uid from users where email=$1"
+	selectQuery := "select uid, password from users where email=$1"
 	err := db.QueryRow(selectQuery, payload.Email).Scan(&userID, &password)
 	if err != nil {
 		return "", err

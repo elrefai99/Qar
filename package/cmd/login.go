@@ -24,6 +24,15 @@ func NewLoginCommand(db *sql.DB) *cobra.Command {
 				return
 			}
 
+			emailResult := make(chan error, 1)
+			go func() {
+				emailResult <- utils.SendEmails(email)
+			}()
+
+			if err := <-emailResult; err != nil {
+				log.Println("email failed:", err)
+			}
+
 			if err := saveToken(token); err != nil {
 				log.Println(err)
 				return
