@@ -1,0 +1,14 @@
+{
+  "buildCommand": "pnpm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/github", "destination": "https://github.com/elrefai99", "permanent": true },
+    { "source": "/gh", "destination": "https://github.com/elrefai99", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
